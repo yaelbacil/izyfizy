@@ -1,0 +1,97 @@
+[project]
+name = "izyfizy"
+version = "0.0.0"
+description = "Package to ease the life of physics students."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+    "ruff>=0.13.1",
+]
+lint = [
+    "mypy>=1.18.2",
+    "ruff>=0.13.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.mypy]
+explicit_package_bases = true
+exclude = ["generated.*"]
+cache_dir = "./.cache/mypy"
+pretty = true
+strict = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+disable_error_code = []
+
+[tool.ruff]
+cache-dir = "./.cache/ruff"
+exclude = ["generated*.py"]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "ASYNC",
+    "B",
+    "COM",
+    "C4",
+    "C90",
+    "D", 
+    "E",
+    "ERA",
+    "F",
+    "I",
+    "LOG",
+    "N",
+    "PL",
+    "PT",
+    "PTH",
+    "Q",
+    "RUF",
+    "S",
+    "TC",
+    "TD",
+    "TRY",
+    "SIM",
+    "W"
+]
+ignore = [
+    "COM812",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D203",
+    "D212"
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"test_*.py" = ["S101"]
+
+[tool.ruff.lint.flake8-annotations]
+allow-star-arg-any = true
+
