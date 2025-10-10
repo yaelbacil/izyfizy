@@ -1,23 +1,18 @@
 repos:
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-  # Ruff version.
-    rev: v0.13.1
+  - repo: local
     hooks:
-      - id: ruff-check
       - id: ruff-format
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: ''  # Use the sha / tag you want to point at
-    hooks:
+        name: ruff format
+        entry: .venv/bin/ruff format --check
+        language: python
+        types_or: [python, pyi]
+      - id: ruff-check
+        name: ruff check
+        entry: .venv/bin/ruff check
+        language: python
+        types_or: [python, pyi]
       - id: mypy
-  # .pre-commit-config.yaml
-  - repo: https://github.com/MarcoGorelli/absolufy-imports
-    rev: v0.3.0 # Use the latest version
-    hooks:
-      - id: absolufy-imports
-        args: [--application-directories, src] # Specify your source directory if applicable
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0 # Use the latest stable version
-    hooks:
-      - id: check-yaml
-      - id: check-json
-      - id: check-xml
+        name: mypy
+        entry: .venv/bin/mypy
+        language: python
+        types_or: [python, pyi]
